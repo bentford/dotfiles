@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ ${#2} -eq 0 ]
+then
+    echo "Usage: ${0} <folder-name> <repo-name>"
+    echo "Example: ${0} . MyRepo.git"
+    exit 1
+fi
+
+FOLDER=$1
+REPO_NAME=$2
+
+git clone --bare ${FOLDER} ~/Dropbox/Repos/${REPO_NAME}
+cd ${FOLDER}
+git remote add dropbox ~/Dropbox/Repos/${REPO_NAME}
+git push -u dropbox master

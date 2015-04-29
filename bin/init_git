@@ -1,0 +1,4 @@
+git init
+cp ~/bin/git_ignore_template .gitignore
+git add .gitignore
+git commit -m "added ignore file"

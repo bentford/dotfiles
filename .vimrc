@@ -1,7 +1,9 @@
 execute pathogen#infect()
+"filetype plugin indent on
 
-set number
 syntax on
+set background=dark
+set number
 set ruler
 set autoread
 

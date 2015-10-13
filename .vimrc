@@ -7,7 +7,7 @@ set number
 set ruler
 set autoread
 
-vnorem // y/<c-r>"<cr>
+vnoremap // y/<c-r>"<cr>
 " not convinced I like this (plus, I like ;)
 " nnoremap ; :
 

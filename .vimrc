@@ -8,8 +8,6 @@ set ruler
 set autoread
 
 vnoremap // y/<c-r>"<cr>
-" not convinced I like this (plus, I like ;)
-" nnoremap ; :
 
 " easier way to close a split (but it doesn't work)
 nnoremap <C-W><C-Q> <C-W>q

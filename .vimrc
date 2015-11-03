@@ -6,8 +6,20 @@ set background=dark
 set number
 set ruler
 set autoread
+set splitright
 
+let mapleader = ","
+
+" save file faster
+nnoremap <leader>w :w<cr>
+" open CtrlP
+nnoremap <leader>p :CtrlP<cr>
+" search for current visual mode selection
 vnoremap // y/<c-r>"<cr>
+
+" open .h/.m
+nnoremap <leader>h :e %<.h<cr>
+nnoremap <leader>m :e %<.m<cr>
 
 " easier way to close a split (but it doesn't work)
 nnoremap <C-W><C-Q> <C-W>q

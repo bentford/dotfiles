@@ -33,10 +33,25 @@ alias glat='gaa; gc -m "latest";'
 
 alias ber='bundle exec rake'
 
-
-
 export PATH="~/bin:/usr/local/bin:/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 
+
+function gbb() {
+
+    if [ -z "${1}" ] 
+        then
+        echo "missing branch name argument"
+        return 0
+    fi
+
+    branch_name=${1}
+    output=$(git rev-parse --verify ${branch_name})
+    if [ $? -eq 0 ]
+        then
+        output=$(git branch -D ${branch_name})
+    fi
+    output=$(git branch ${branch_name})
+}
 
 function gcon() {
 

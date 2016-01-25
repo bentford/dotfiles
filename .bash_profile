@@ -50,7 +50,12 @@ function gbb() {
         then
         output=$(git branch -D ${branch_name})
     fi
-    output=$(git branch ${branch_name})
+    git branch ${branch_name}
+
+    if [ $? -ne 0 ]
+        then
+        echo "Failed to create branch ${branch_name}"
+    fi
 }
 
 function gcon() {

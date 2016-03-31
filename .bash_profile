@@ -33,6 +33,8 @@ alias glat='gaa; gc -m "latest";'
 
 alias ber='bundle exec rake'
 
+alias bname='branch=$(git symbolic-ref --short HEAD)'
+
 export PATH="~/bin:/usr/local/bin:/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 
 

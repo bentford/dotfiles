@@ -37,6 +37,8 @@ alias bname='branch=$(git symbolic-ref --short HEAD)'
 
 export PATH="~/bin:/usr/local/bin:/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
 
+alias rrrr='gbb; gco release/16.3; gpu; gco -; git rebase release/16.3; gp --force;'
+alias mmmm='gbb; gco master; gpu; gco -; git rebase master; gp --force;'
 
 function gbb() {
 

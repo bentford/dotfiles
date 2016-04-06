@@ -42,13 +42,13 @@ alias mmmm='gbb; gco master; gpu; gco -; git rebase master; gp --force;'
 
 function gbb() {
 
-    if [ -z "${1}" ] 
+    if [ -z "${1}" ]
         then
-        echo "missing branch name argument"
-        return 0
+        branch_name='backup'
+    else    
+        branch_name=${1}
     fi
 
-    branch_name=${1}
     output=$(git rev-parse --verify ${branch_name})
     if [ $? -eq 0 ]
         then

@@ -50,6 +50,11 @@ nnoremap <C-W><C-Q> <C-W>q
 nnoremap <leader>cp :let @" = expand("%:t")<cr>
 nnoremap <leader>cpp :let @* = expand("%:t")<cr>
 
+" move line up
+nnoremap <leader>f ddkkp
+" move line down
+nnoremap <leader>d ddp
+
 set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>

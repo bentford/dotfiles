@@ -9,6 +9,7 @@ syntax on
 set background=dark
 set number
 set ruler
+set cursorline
 set autoread
 set splitright
 

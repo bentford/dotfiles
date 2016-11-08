@@ -4,7 +4,7 @@ __powerline() {
 
 	# other symbols I liked
 	# ▶︎〉⌇⑆⍈⍄⌶⸬▞ ◧ ▙ ➜
-		
+
     # Unicode symbols
 	readonly FILE_SYMBOL='〉'
     readonly GIT_BRANCH_SYMBOL='⑂ '
@@ -54,7 +54,7 @@ __powerline() {
     readonly RESET="\[$(tput sgr0)\]"
     readonly BOLD="\[$(tput bold)\]"
 
-    __git_info() { 
+    __git_info() {
         [ -x "$(which git)" ] || return    # git not found
 
         # get current branch name or short SHA1 hash for detached head
@@ -84,9 +84,9 @@ __powerline() {
 		if [ -n "${GIT_INFO}" ]; then
 			OPTIONAL_NEWLINE="\n"
 		fi
-		
-        PS1="$BG_GREEN$FG_BASE3 ${FILE_SYMBOL}\w$RESET"
-        PS1+="$BG_BLUE$FG_BASE3$(__git_info)$RESET${OPTIONAL_NEWLINE}"
+
+        PS1="$BG_GREEN$FG_BASE02${FILE_SYMBOL}\w$RESET"
+        PS1+="$BG_BLUE$FG_BASE02$(__git_info)$RESET${OPTIONAL_NEWLINE}"
 		PS1+="$ "
     }
 

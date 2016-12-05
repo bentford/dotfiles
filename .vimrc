@@ -46,7 +46,7 @@ nnoremap <leader>h :e %<.h<cr>
 nnoremap <leader>m :e %<.m<cr>
 
 " easier way to close a split (but it doesn't work)
-nnoremap <C-W><C-Q> <C-W>q
+nnoremap <c-w><c-q> <c-w>q
 
 nnoremap <leader>cp :let @" = expand("%:t")<cr>
 nnoremap <leader>cpp :let @* = expand("%:t")<cr>
@@ -78,3 +78,19 @@ command! FormatJSON execute '%!python -m json.tool' | w
 
 let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
 let g:clang_auto_user_options = "compile_commands.json, .clang_complete"
+
+" edit your .vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+" source your .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" markdown shortcuts
+augroup markdown
+    autocmd!
+    autocmd FileType markdown nnoremap <leader># I### <esc>
+augroup END
+
+" remembers last line in file
+augroup misc
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+ augroup END

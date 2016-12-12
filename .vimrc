@@ -1,6 +1,8 @@
 let g:pathogen_disabled = []
 " disable clang_complete until I have it working
 call add(g:pathogen_disabled, 'clang_complete')
+" disable syntastic until I have it working
+call add(g:pathogen_disabled, 'syntastic')
 
 execute pathogen#infect()
 "filetype plugin indent on
@@ -70,7 +72,7 @@ nnoremap <leader>5 5gt
 nmap g<C-O> O<ESC>j
 nmap gO o<ESC>k
 
-nnoremap <leader>dd :put =strftime(\"%m/%d/%y\")<enter><cr>
+nnoremap <leader>dd :put =strftime(\"%m-%d-%y\")<enter><cr>
 
 " formats JSON
 command! FormatJSON execute '%!python -m json.tool' | w
@@ -94,3 +96,7 @@ augroup END
 augroup misc
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
  augroup END
+
+ nnoremap <leader>nt :NERDTreeToggle<cr>
+ nnoremap <leader>nf :NERDTreeFind<cr>
+

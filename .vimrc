@@ -115,3 +115,6 @@ function! NextClosedFold(dir)
         call winrestview(view)
     endif
 endfunction
+
+" Always start on first line of git commit
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])

@@ -6,6 +6,7 @@ call add(g:pathogen_disabled, 'syntastic')
 
 execute pathogen#infect()
 "filetype plugin indent on
+filetype plugin on
 
 syntax on
 set background=dark
@@ -56,7 +57,7 @@ nnoremap <leader>cpp :let @* = expand("%:t")<cr>
 " move line up
 nnoremap <leader>f ddkkp
 " move line down
-nnoremap <leader>d ddp
+nnoremap <leader>g ddp
 
 set mouse=a
 map <ScrollWheelUp> <C-Y>
@@ -72,7 +73,7 @@ nnoremap <leader>5 5gt
 nmap g<C-O> O<ESC>j
 nmap gO o<ESC>k
 
-nnoremap <leader>dd :put =strftime(\"%m-%d-%y\")<enter><cr>
+nnoremap <leader>da :put =strftime(\"%m-%d-%y\")<enter><cr>
 
 " formats JSON
 command! FormatJSON execute '%!python -m json.tool' | w
@@ -115,6 +116,3 @@ function! NextClosedFold(dir)
         call winrestview(view)
     endif
 endfunction
-
-" Always start on first line of git commit
-autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])

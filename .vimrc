@@ -59,6 +59,10 @@ nnoremap <leader>f ddkkp
 " move line down
 nnoremap <leader>g ddp
 
+" scroll up and down faster
+nnoremap <c-E> 10<c-e>
+nnoremap <c-Y> 10<c-y>
+
 set mouse=a
 map <ScrollWheelUp> <C-Y>
 map <ScrollWheelDown> <C-E>

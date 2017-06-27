@@ -1,7 +1,7 @@
-set gfn=Monaco:h13
+set gfn=SF\ Mono:h13
 set bg=dark
 set gcr=a:blinkon0
-colorscheme solarized
+colorscheme onedark
 
 execute pathogen#infect()
 

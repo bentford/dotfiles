@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/vim-swift"]
 	path = .vim/bundle/vim-swift
 	url = https://github.com/toyamarinyon/vim-swift.git
+[submodule "gitwdiff"]
+	path = gitwdiff
+	url = git@github.com:suomela/gitwdiff.git

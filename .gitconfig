@@ -2,11 +2,13 @@
 	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	logc = log --color --abbrev-commit
 	mulch = "!_() { git remote prune origin && git branch --merged | grep -v '^*' | xargs -n 1 git branch -d; }; _"
+    checkout-history = "!_() { for i in {1..15}; do echo $i-$(git rev-parse --symbolic-full-name @{-$i}); done; }; _"
+    interactive-checkout = !~/bin/interactive_checkout.py
 [push]
 	default = simple
 [user]
 	name = Ben Ford
-	email = bentford@gmail.com
+	email = bford@walmart.com
 [color]
 	branch = auto
 	diff = auto
@@ -30,3 +32,10 @@
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[hub]
+	host = gecgithub01.walmart.com

@@ -73,7 +73,7 @@ nnoremap <leader>5 5gt
 nmap g<C-O> O<ESC>j
 nmap gO o<ESC>k
 
-nnoremap <leader>da :put =strftime(\"%m-%d-%y\")<enter><cr>
+nnoremap <leader>da :put =strftime(\"%m-%d-%y\")<cr>dEkA<esc>p
 
 " formats JSON
 command! FormatJSON execute '%!python -m json.tool' | w

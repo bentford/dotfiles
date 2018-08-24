@@ -24,6 +24,8 @@ if [ ! -d $GITPATH ]; then
 
 cd $GITPATH
 
+set -o noglob
+
 BRANCHES=()
 # Remove origin/HEAD and ''
 let ctr=0

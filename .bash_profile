@@ -36,7 +36,7 @@ alias ber='bundle exec rake'
 
 alias bname='branch=$(git symbolic-ref --short HEAD)'
 
-export PATH="~/bin:/usr/local/bin:/usr/local/Cellar/ruby/2.0.0-p247/bin:$PATH"
+export PATH="~/bin:/usr/local/bin:/usr/local/Cellar/ruby/2.0.0-p247/bin:~/Library/Python/2.7/bin:$PATH"
 
 alias rrrr='gbb; gco release/17.4; gpu; gco -; git rebase release/17.4; gp --force;'
 alias mmmm='gbb; gco master; gpu; gco -; git rebase master; gp --force;'

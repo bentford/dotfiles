@@ -7,3 +7,6 @@
 [submodule "gitwdiff"]
 	path = gitwdiff
 	url = git@github.com:suomela/gitwdiff.git
+[submodule "close-buffers.vim"]
+	path = .vim/bundle/close-buffers.vim
+	url = git@github.com:Asheq/close-buffers.vim.git

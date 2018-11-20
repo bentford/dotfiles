@@ -88,8 +88,9 @@ while true {
 
     if confirm == "y" || confirm == "Y" {
         for branch in branchNames {
-                print("deleting \(branch)")
-                //shell(["git", "branch", "-D", branch])
+            let trimmed = branch.trimmingCharacters(in: .whitespacesAndNewlines)
+                print("deleting \(trimmed)")
+                shell(["git", "branch", "-D", trimmed])
         }
 
         print("Done")

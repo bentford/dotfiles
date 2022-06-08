@@ -8,7 +8,7 @@
 	default = simple
 [user]
 	name = Ben Ford
-	email = bford@walmart.com
+	email = bentford@gmail.com
 [color]
 	branch = auto
 	diff = auto
@@ -37,5 +37,3 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-[hub]
-	host = gecgithub01.walmart.com

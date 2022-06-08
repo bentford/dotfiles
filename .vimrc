@@ -1,10 +1,25 @@
-let g:pathogen_disabled = []
-" disable clang_complete until I have it working
-call add(g:pathogen_disabled, 'clang_complete')
-" disable syntastic until I have it working
-call add(g:pathogen_disabled, 'syntastic')
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dyng/ctrlsf.vim'
+call plug#end()
 
-execute pathogen#infect()
+if executable('sourcekit-lsp')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'sourcekit-lsp',
+        \ 'cmd': {server_info->['sourcekit-lsp']},
+        \ 'whitelist': ['swift'],
+        \ })
+endif
+
+augroup filetype
+  au! BufRead,BufNewFile *.swift set ft=swift
+augroup END
+
+autocmd FileType swift setlocal omnifunc=lsp#complete
+
+
 "filetype plugin indent on
 filetype plugin on
 
@@ -88,10 +103,6 @@ nnoremap <leader>da :put =strftime(\"%m-%d-%y\")<cr>dEkA<esc>p
 
 " formats JSON
 command! FormatJSON execute '%!python -m json.tool' | w
-
-
-let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
-let g:clang_auto_user_options = "compile_commands.json, .clang_complete"
 
 " edit your .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>

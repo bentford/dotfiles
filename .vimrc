@@ -1,8 +1,11 @@
 call plug#begin()
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
+Plug 'Asheq/close-buffers.vim'
+Plug 'arp242/auto_mkdir2.vim'
 call plug#end()
 
 if executable('sourcekit-lsp')
@@ -30,6 +33,10 @@ set ruler
 set cursorline
 set autoread
 set splitright
+
+" set the vertical window separator to a solid line
+set encoding=utf8
+set fillchars=vert:│,eob:\ 
 
 " searching
 set incsearch
@@ -138,3 +145,5 @@ function! NextClosedFold(dir)
         call winrestview(view)
     endif
 endfunction
+
+nnoremap <leader>gl :G log -n 10<cr>

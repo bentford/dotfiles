@@ -25,7 +25,7 @@ let colors_name = "macvim"
 
 " `:he highlight-groups`
 hi DiffAdd      guibg=MediumSeaGreen
-hi Directory    guifg=#1600FF
+hi Directory    guifg=#2859FF
 hi ErrorMsg     guibg=Firebrick2 guifg=White
 hi FoldColumn   guibg=Grey guifg=DarkBlue
 hi Folded       guibg=#E6E6E6 guifg=DarkBlue
@@ -44,13 +44,13 @@ hi SpellBad     guisp=Firebrick2 gui=undercurl
 hi SpellCap     guisp=Blue gui=undercurl
 hi SpellLocal   guisp=DarkCyan gui=undercurl
 hi SpellRare    guisp=Magenta gui=undercurl
-hi StatusLine   gui=NONE guifg=White guibg=DarkSlateGray
-hi StatusLineNC gui=NONE guifg=SlateGray guibg=Gray90
+hi StatusLine   gui=NONE guifg=SlateGray guibg=Gray90
+hi StatusLineNC gui=NONE guifg=White guibg=DarkSlateGray 
 hi TabLine      gui=underline guibg=LightGrey
 hi TabLineFill  gui=reverse
 hi TabLineSel   gui=bold
 hi Title        gui=bold guifg=DeepSkyBlue3
-hi VertSplit    gui=NONE guifg=DarkSlateGray guibg=Gray90
+hi VertSplit    gui=NONE guifg=SlateGray guibg=Gray5
 if has("gui_macvim")
   hi Visual       guibg=MacSelectedTextBackgroundColor
 else
@@ -64,7 +64,7 @@ hi Error        gui=NONE guifg=White guibg=Firebrick3
 hi Identifier   gui=NONE guifg=Aquamarine4 guibg=NONE
 hi Ignore       gui=NONE guifg=bg guibg=NONE
 hi PreProc      gui=NONE guifg=DodgerBlue3 guibg=NONE
-hi Special      gui=NONE guifg=BlueViolet guibg=NONE
+hi Special      gui=NONE guifg=#A359E8 guibg=NONE
 hi String       gui=NONE guifg=SkyBlue4 guibg=NONE
 hi Underlined   gui=underline guifg=SteelBlue1
 
@@ -86,9 +86,9 @@ if &background == "dark"
   hi DiffText     gui=NONE guifg=White guibg=SteelBlue
   hi LineNr       guifg=#552A7B guibg=Grey5
   hi MatchParen   guifg=White guibg=Magenta
-  hi Normal       guifg=Grey50 guibg=Grey10
+  hi Normal       guifg=Grey60 guibg=Grey10
   hi Search       guibg=Blue4 guifg=NONE
-  hi Statement    gui=bold guifg=Purple1 guibg=NONE
+  hi Statement    gui=bold guifg=MediumPurple1 guibg=NONE
   hi Todo         gui=NONE guifg=Green4 guibg=DeepSkyBlue1
   hi Type         gui=bold guifg=Cyan4 guibg=NONE
   hi WildMenu     guibg=SkyBlue guifg=White

@@ -148,3 +148,24 @@ function! NextClosedFold(dir)
 endfunction
 
 nnoremap <leader>gl :G log -n 10<cr>
+
+" Rotate a window horizontally to the left
+function! RotateLeft()
+    let l:curbuf = bufnr('%')
+    hide
+    wincmd h
+    split
+    exe 'buf' l:curbuf
+endfunc
+
+" Rotate a window horizontally to the right
+function! RotateRight()
+    let l:curbuf = bufnr('%')
+    hide
+    wincmd l
+    split
+    exe 'buf' l:curbuf
+endfunc
+
+nnoremap <silent> <leader>wr :call RotateRight()<cr>
+nnoremap <silent> <leader>wl :call RotateRight()<cr>

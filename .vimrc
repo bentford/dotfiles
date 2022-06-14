@@ -6,6 +6,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'Asheq/close-buffers.vim'
 Plug 'arp242/auto_mkdir2.vim'
+Plug 'SidOfc/mkdx'
 call plug#end()
 
 if executable('sourcekit-lsp')

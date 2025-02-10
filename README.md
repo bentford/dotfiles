@@ -1,3 +1,3 @@
 # dotfiles
 
-Just my lame dotfiles
+My dotfiles

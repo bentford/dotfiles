@@ -1,2 +1,0 @@
-markdown-1.2.2.vba: call delete('/Users/ben/.vim/ftdetect/markdown.vim')|call delete('/Users/ben/.vim/snippets/markdown.snippets')|call delete('/Users/ben/.vim/syntax/markdown.vim')
-loremipsum.vba: call delete('/Users/ben/.vim/autoload/loremipsum.vim')|call delete('/Users/ben/.vim/autoload/loremipsum.txt')|call delete('/Users/ben/.vim/plugin/loremipsum.vim')|call delete('/Users/ben/.vim/doc/loremipsum.txt')

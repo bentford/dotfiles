@@ -142,9 +142,13 @@ alias gsfzf='git switch $(gb | fzf)'
 alias gai="git add -i"
 alias gfa="git forgit add"
 alias gdh="git diff HEAD~1"
+alias gcanm="git commit --all --no-verify --message"
+alias gcnn!="git commit --no-verify --no-edit --amend"
 
 export PATH="$HOME/.mint/bin:/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:/usr/local/bin:$PATH"
 export ANDROID_HOME=~/Library/Android/sdk
+
+export GLASSCLI_XCODE_DEV_VERSION_ENABLED="1"
 
 autoload -Uz compinit && compinit
 

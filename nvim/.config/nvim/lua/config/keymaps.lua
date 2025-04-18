@@ -3,12 +3,15 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 
-map("n", "<Leader>fs", ":w<cr>", { desc = "Save File" })
 map("i", "<c-8>", "<c-r>=strftime('%F')<cr>", { desc = "Insert date" })
 map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gd", ":DiffviewFileHistory %<cr>", { desc = "Current File History" })
 map("n", "<Leader>fy", ":let @*=@%<cr>", { desc = "Copy filename to clipboard" })
+
+-- TODO: determine how to call mini-surround
+-- map("n", "<Leader>gww", "<Leader>gsaiw`", { desc = "Surround backtick inner word" })
+-- map("n", "<Leader>gWW", "<Leader>gsaiW`", { desc = "Surround backtick inner WORD" })
 
 -- Search markdown headers
 

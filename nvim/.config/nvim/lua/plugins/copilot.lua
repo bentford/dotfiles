@@ -3,6 +3,7 @@ return {
   cmd = "Copilot", -- lazy-load on command
   event = "VeryLazy", -- or use "VeryLazy" for even more lazy loading
   config = function()
+    vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#FFFFFF", italic = true })
     require("copilot").setup({
       panel = {
         enabled = true,

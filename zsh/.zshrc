@@ -123,7 +123,7 @@ alias glvpc="glass verify pre-commit"
 
 alias xco="xed markets/usa-sams/SamsClub-us.xcodeproj"
 alias xclo="xed SamsClub.xcworkspace" 
-alias xcc="osascript -e 'tell app \"XCode\" to close window 0'"
+alias xcc="osascript -e 'tell app \"XCode-16.3.0\" to close window 0'"
 
 alias cdn=" cd ~/Devel/notes"
 alias scrc="cd ~/Devel/sng-remote-config/"

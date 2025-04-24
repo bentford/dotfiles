@@ -10,8 +10,5 @@ return {
         vim.cmd("!git commit --amend --no-edit")
       end, {})
     end,
-    opts = {
-      colorscheme = "tokyonight",
-    },
   },
 }

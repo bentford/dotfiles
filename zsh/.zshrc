@@ -145,6 +145,8 @@ alias gdh="git diff HEAD~1"
 alias gcanm="git commit --all --no-verify --message"
 alias gcnn!="git commit --no-verify --no-edit --amend"
 
+alias gsb="git-sync-branch"
+
 export PATH="$HOME/.mint/bin:/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:/usr/local/bin:$PATH"
 export ANDROID_HOME=~/Library/Android/sdk
 
@@ -159,3 +161,15 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
+
+function git-sync-branch() {
+  if [ -z "$1" ]; then
+    echo "Usage: git-sync-branch <branch-name>"
+    return 1
+  fi
+
+  local branch="$1"
+  gfo "$branch:$branch"
+  gsw "$branch"
+}
+

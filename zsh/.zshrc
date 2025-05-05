@@ -145,7 +145,10 @@ alias gdh="git diff HEAD~1"
 alias gcanm="git commit --all --no-verify --message"
 alias gcnn!="git commit --no-verify --no-edit --amend"
 
-alias gsb="git-sync-branch"
+alias gfsb="git-fetch-switch-branch"
+alias gfdcb="git-fetch-development-create-branch"
+alias gfod="gfo development"
+alias gfodd="gfo development:development"
 
 export PATH="$HOME/.mint/bin:/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:/usr/local/bin:$PATH"
 export ANDROID_HOME=~/Library/Android/sdk
@@ -162,14 +165,25 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-function git-sync-branch() {
+function git-fetch-switch-branch() {
   if [ -z "$1" ]; then
-    echo "Usage: git-sync-branch <branch-name>"
+    echo "Usage: git-fetch-switch-branch <branch-name>"
     return 1
   fi
 
   local branch="$1"
   gfo "$branch:$branch"
   gsw "$branch"
+}
+
+function git-fetch-development-create-branch() {
+  if [ -z "$1" ]; then
+    echo "Usage: git-fetch-development-create-branch <branch-name>"
+    return 1
+  fi
+
+  local branch="$1"
+  gfo development:development
+  gswc "$branch"
 }
 

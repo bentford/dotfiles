@@ -22,20 +22,10 @@ zstyle ':omz:plugins:alias-finder' longer yes
 zstyle ':omz:plugins:alias-finder' exact yes
 zstyle ':omz:plugins:alias-finder' cheaper yes
 
-[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+[[ -f ~/.zsh_flags ]] && source ~/.zsh_flags
 
-export PATH="$HOME/.mint/bin:/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:/usr/local/bin:$PATH"
-export ANDROID_HOME=~/Library/Android/sdk
-
-export GLASSCLI_XCODE_DEV_VERSION_ENABLED="1"
-
-autoload -Uz compinit && compinit
-
-# setup pyenv
-if command -v pyenv 1>/dev/null 2>&1; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init --path)"
-  eval "$(pyenv init -)"
+if [[ "$ENABLE_WORK" == "true" ]]; then
+  [[ -f ~/.zsh_work ]] && source ~/.zsh_work
 fi
 
+[[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases

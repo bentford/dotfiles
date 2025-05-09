@@ -1,30 +1,3 @@
-
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
-
-alias bepi="bundle exec pod install; afplay /System/Library/Sounds/Glass.aiff"
-
-alias glig="./scripts/install-glass-cli.sh"
-alias gles="glass environment setup"
-alias gliges="./scripts/install-glass-cli.sh; glass; afplay /System/Library/Sounds/Glass.aiff"
-alias glvpc="glass verify pre-commit"
-
-alias xco="xed markets/usa-sams/SamsClub-us.xcodeproj"
-alias xclo="xed SamsClub.xcworkspace" 
-alias xcc="osascript -e 'tell app \"XCode-16.3.0\" to close window 0'"
-
-alias cdn=" cd ~/Devel/notes"
-alias scrc="cd ~/Devel/sng-remote-config/"
-
-alias sc3="cd ~/Devel/SamsClub-iOS_3/"
-alias sc4="cd ~/Devel/SamsClub-iOS_4/"
-alias sc5="cd ~/Devel/SamsClub-iOS_5/"
-alias sc6="cd ~/Devel/SamsClub-iOS_6/"
-
-alias gl1="cd ~/Devel/glass-app_1/"
-alias gl2="cd ~/Devel/glass-app_2/"
-alias gl3="cd ~/Devel/glass-app_3/"
-alias gl4="cd ~/Devel/glass-app_4/"
-
 alias gsfzf='git switch $(gb | fzf)'
 alias gai="git add -i"
 alias gfa="git forgit add"

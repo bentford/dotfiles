@@ -112,43 +112,7 @@ zstyle ':omz:plugins:alias-finder' longer yes
 zstyle ':omz:plugins:alias-finder' exact yes
 zstyle ':omz:plugins:alias-finder' cheaper yes
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
-
-alias bepi="bundle exec pod install; afplay /System/Library/Sounds/Glass.aiff"
-
-alias glig="./scripts/install-glass-cli.sh"
-alias gles="glass environment setup"
-alias gliges="./scripts/install-glass-cli.sh; glass; afplay /System/Library/Sounds/Glass.aiff"
-alias glvpc="glass verify pre-commit"
-
-alias xco="xed markets/usa-sams/SamsClub-us.xcodeproj"
-alias xclo="xed SamsClub.xcworkspace" 
-alias xcc="osascript -e 'tell app \"XCode-16.3.0\" to close window 0'"
-
-alias cdn=" cd ~/Devel/notes"
-alias scrc="cd ~/Devel/sng-remote-config/"
-
-alias sc3="cd ~/Devel/SamsClub-iOS_3/"
-alias sc4="cd ~/Devel/SamsClub-iOS_4/"
-alias sc5="cd ~/Devel/SamsClub-iOS_5/"
-alias sc6="cd ~/Devel/SamsClub-iOS_6/"
-
-alias gl1="cd ~/Devel/glass-app_1/"
-alias gl2="cd ~/Devel/glass-app_2/"
-alias gl3="cd ~/Devel/glass-app_3/"
-alias gl4="cd ~/Devel/glass-app_4/"
-
-alias gsfzf='git switch $(gb | fzf)'
-alias gai="git add -i"
-alias gfa="git forgit add"
-alias gdh="git diff HEAD~1"
-alias gcanm="git commit --all --no-verify --message"
-alias gcnn!="git commit --no-verify --no-edit --amend"
-
-alias gfsb="git-fetch-switch-branch"
-alias gfdcb="git-fetch-development-create-branch"
-alias gfod="gfo development"
-alias gfodd="gfo development:development"
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
 
 export PATH="$HOME/.mint/bin:/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:/usr/local/bin:$PATH"
 export ANDROID_HOME=~/Library/Android/sdk
@@ -164,26 +128,4 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
-
-function git-fetch-switch-branch() {
-  if [ -z "$1" ]; then
-    echo "Usage: git-fetch-switch-branch <branch-name>"
-    return 1
-  fi
-
-  local branch="$1"
-  gfo "$branch:$branch"
-  gsw "$branch"
-}
-
-function git-fetch-development-create-branch() {
-  if [ -z "$1" ]; then
-    echo "Usage: git-fetch-development-create-branch <branch-name>"
-    return 1
-  fi
-
-  local branch="$1"
-  gfo development:development
-  gswc "$branch"
-}
 

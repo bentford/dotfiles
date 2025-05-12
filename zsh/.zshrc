@@ -22,6 +22,8 @@ zstyle ':omz:plugins:alias-finder' longer yes
 zstyle ':omz:plugins:alias-finder' exact yes
 zstyle ':omz:plugins:alias-finder' cheaper yes
 
+export PATH="/opt/homebrew/bin:$PATH"
+
 [[ -f ~/.zsh_flags ]] && source ~/.zsh_flags
 
 if [[ "$ENABLE_WORK" == "true" ]]; then

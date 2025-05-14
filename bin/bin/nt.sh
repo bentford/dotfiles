@@ -1,0 +1,38 @@
+#!/usr/bin/osascript
+
+on run argv
+	if (count of argv) is 0 then
+		say "Usage: check, disable, close, launch"
+  endif
+
+  set arg1 to item 1 of argv
+
+  if arg1 is "check" then
+    set networkService to "Wi-Fi" -- Replace with your network service name if different
+    set proxyStatus to do shell script "networksetup -getautoproxyurl " & quoted form of networkService
+
+    if proxyStatus contains "Enabled: Yes" then
+        return "Autoproxy is enabled"
+    else
+        return "Autoproxy is disabled"
+    end if
+  else if arg1 is "close" then
+    try
+      tell application "Cisco Secure Client" to quit
+      return "Cisco Secure Client quit successfully."
+    on error errMsg number errNum
+      if errNum ≠ -128 then
+        return "Error: " & errMsg & " (" & errNum & ")"
+      end if
+    end try
+
+    tell application "Proxyman" to quit
+  else if arg1 is "disable" then
+    set networkService to "Wi-Fi" -- Replace with your network service name if different
+    do shell script "networksetup -setproxyautodiscovery " & quoted form of networkService & " off"
+    return "automatic proxy disabled"
+  else if arg1 is "launch" then
+    tell application "Proxyman" to activate
+    tell application "Cisco Secure Client" to activate
+  end if
+end run

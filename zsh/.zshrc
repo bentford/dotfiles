@@ -22,7 +22,7 @@ zstyle ':omz:plugins:alias-finder' longer yes
 zstyle ':omz:plugins:alias-finder' exact yes
 zstyle ':omz:plugins:alias-finder' cheaper yes
 
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/bin:$HOME/bin:$PATH"
 
 [[ -f ~/.zsh_flags ]] && source ~/.zsh_flags
 

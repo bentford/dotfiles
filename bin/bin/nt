@@ -3,7 +3,7 @@
 on run argv
 	if (count of argv) is 0 then
 		say "Usage: check, disable, close, launch"
-  endif
+  end if
 
   set arg1 to item 1 of argv
 
@@ -17,6 +17,7 @@ on run argv
         return "Autoproxy is disabled"
     end if
   else if arg1 is "close" then
+    tell application "Proxyman" to quit
     try
       tell application "Cisco Secure Client" to quit
       return "Cisco Secure Client quit successfully."
@@ -25,8 +26,6 @@ on run argv
         return "Error: " & errMsg & " (" & errNum & ")"
       end if
     end try
-
-    tell application "Proxyman" to quit
   else if arg1 is "disable" then
     set networkService to "Wi-Fi" -- Replace with your network service name if different
     do shell script "networksetup -setproxyautodiscovery " & quoted form of networkService & " off"

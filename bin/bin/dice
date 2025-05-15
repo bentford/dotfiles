@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+MIN=$1
+MAX=$2
+
+if [[ -z "$MIN" || -z "$MAX" ]]; then
+  echo "Usage: $0 MIN MAX"
+  exit 1
+fi
+
+echo $((RANDOM % (MAX - MIN + 1) + MIN))
+

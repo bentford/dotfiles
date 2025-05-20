@@ -1,9 +1,8 @@
 [alias]
 	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	logc = log --color --abbrev-commit
-	mulch = "!_() { git remote prune origin && git branch --merged | grep -v '^*' | xargs -n 1 git branch -d; }; _"
+ 	mulch = "!_() { git remote prune origin && git branch --merged | grep -v '^*' | xargs -n 1 git branch -d; }; _"
     checkout-history = "!_() { for i in {1..15}; do echo $i-$(git rev-parse --symbolic-full-name @{-$i}); done; }; _"
-    interactive-checkout = !~/bin/interactive_checkout.py
 [push]
 	default = simple
 [user]

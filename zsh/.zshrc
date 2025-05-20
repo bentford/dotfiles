@@ -24,10 +24,5 @@ zstyle ':omz:plugins:alias-finder' cheaper yes
 
 export PATH="/opt/homebrew/bin:$HOME/bin:$PATH"
 
-[[ -f ~/.zsh_flags ]] && source ~/.zsh_flags
-
-if [[ "$ENABLE_WORK" == "true" ]]; then
-  [[ -f ~/.zsh_work ]] && source ~/.zsh_work
-fi
-
+[[ -f ~/.zsh_work ]] && source ~/.zsh_work
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases

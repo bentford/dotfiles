@@ -2,7 +2,7 @@
 
 on run argv
 	if (count of argv) is 0 then
-		say "Usage: check, disable, close, launch"
+		return "Usage: check, disable, close, launch"
   end if
 
   set arg1 to item 1 of argv

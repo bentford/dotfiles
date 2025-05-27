@@ -10,6 +10,9 @@ alias gfdcb="git-fetch-development-create-branch"
 alias gfod="gfo development"
 alias gfodd="gfo development:development"
 
+
+export DERIVED_DATA="$HOME/Library/Developer/Xcode/DerivedData"
+
 function git-fetch-switch() {
   if [ -z "$1" ]; then
     echo "Usage: git-fetch-switch <branch-name>"

@@ -1,3 +1,5 @@
+[include]
+  path = ~/.gitconfig.local
 [alias]
 	lg = log --color --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	logc = log --color --abbrev-commit
@@ -5,9 +7,6 @@
     checkout-history = "!_() { for i in {1..15}; do echo $i-$(git rev-parse --symbolic-full-name @{-$i}); done; }; _"
 [push]
 	default = simple
-[user]
-	name = Ben Ford
-	email = bentford@gmail.com
 [color]
 	branch = auto
 	diff = auto

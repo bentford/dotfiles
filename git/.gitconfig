@@ -25,7 +25,7 @@
 	changed = red
 	untracked = cyan
 [core]
-       editor = vim
+  editor = nvim
 [filter "media"]
 	required = true
 	clean = git media clean %f

@@ -22,9 +22,6 @@ return {
         cvs = false,
         ["*"] = true,
       },
-      server_opts_overrides = {
-        auth_provider_url = "https://gecgithub01.walmart.com",
-      },
     })
   end,
 }

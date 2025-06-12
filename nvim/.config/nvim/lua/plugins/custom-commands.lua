@@ -11,7 +11,13 @@ return {
       end, {})
 
       vim.api.nvim_create_user_command("Gacu", function()
-        vim.fn.system('git add --all && git commit -m "Update"')
+        local output = vim.fn.system('git add --all && git commit -m "Update" && git push')
+
+        if vim.v.shell_error ~= 0 then
+          vim.notify("Git command failed:\n" .. output, vim.log.levels.ERROR)
+        else
+          vim.notify("Git commit success:\n" .. output, vim.log.levels.INFO)
+        end
       end, {})
 
       vim.api.nvim_create_user_command("RandomLine", function()

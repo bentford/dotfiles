@@ -10,6 +10,10 @@ return {
         vim.cmd("!git commit --amend --no-edit")
       end, {})
 
+      vim.api.nvim_create_user_command("Gacu", function()
+        vim.fn.system('git add --all && git commit -m "Update"')
+      end, {})
+
       vim.api.nvim_create_user_command("RandomLine", function()
         local line_count = vim.api.nvim_buf_line_count(0)
         local random_line = math.random(1, line_count)

@@ -3,11 +3,23 @@ return {
     "LazyVim/LazyVim",
     init = function()
       vim.api.nvim_create_user_command("Gcann", function()
-        vim.cmd("!git commit --amend --no-edit --no-verify")
+        local output = vim.fn.system("git commit --amend --no-edit --no-verify")
+
+        if vim.v.shell_error ~= 0 then
+          vim.notify("Git command failed:\n" .. output, vim.log.levels.ERROR)
+        else
+          vim.notify("Git commit success:\n" .. output, vim.log.levels.INFO)
+        end
       end, {})
 
       vim.api.nvim_create_user_command("Gcan", function()
-        vim.cmd("!git commit --amend --no-edit")
+        local output = vim.fn.system("git commit --amend --no-edit")
+
+        if vim.v.shell_error ~= 0 then
+          vim.notify("Git command failed:\n" .. output, vim.log.levels.ERROR)
+        else
+          vim.notify("Git commit success:\n" .. output, vim.log.levels.INFO)
+        end
       end, {})
 
       vim.api.nvim_create_user_command("Gacu", function()

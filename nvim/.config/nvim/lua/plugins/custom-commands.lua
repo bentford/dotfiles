@@ -42,6 +42,11 @@ return {
 
         print("Selected line: " .. random_line)
       end, {})
+
+      vim.api.nvim_create_user_command("Infn", function()
+        local filename = vim.fn.expand("%:t:r")
+        vim.api.nvim_put({ filename }, "c", true, true)
+      end, {})
     end,
   },
 }

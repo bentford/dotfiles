@@ -2,4 +2,4 @@
 *.swp
 .DS_Store
 git/.gitconfig.local
-zsh/.zsh_work
+zsh/.zsh_local

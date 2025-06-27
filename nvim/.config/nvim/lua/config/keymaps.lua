@@ -3,7 +3,14 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 
+local function insert_filename()
+  local filename = vim.fn.expand("%:t:r")
+  local keys = vim.api.nvim_replace_termcodes(filename, true, false, true)
+  vim.api.nvim_feedkeys(keys, "i", true)
+end
+
 map("i", "<c-8>", "<c-r>=strftime('%F')<cr>", { desc = "Insert date" })
+map("i", "<C-9>", insert_filename, { desc = "Insert filename" })
 map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gd", ":DiffviewFileHistory %<cr>", { desc = "Current File History" })

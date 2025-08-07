@@ -1,0 +1,68 @@
+#!/bin/bash
+
+if [ "$1" == "check" ]; then
+  echo "Calculating total disk space used by com.apple.containermanagerd/Dead folders..."
+
+  # Find all Dead folders
+  dead_dirs=$(find ~/Library/Developer/CoreSimulator/Devices/ -type d -name Dead)
+
+  # Exit early if none found
+  if [ -z "$dead_dirs" ]; then
+    echo "No Dead folders found."
+    exit 0
+  fi
+
+  # Initialize total size in kilobytes
+  total_kb=0
+
+  # Loop over each Dead directory and sum up sizes
+  while IFS= read -r dir; do
+    dir_count=$(find "$dir" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d '[:space:]')
+    if [ "$dir_count" -eq 0 ]; then
+      continue
+    fi
+    size_kb=$(du -sk "$dir" | awk '{print $1}')
+    total_kb=$((total_kb + size_kb))
+    echo "• $dir ($dir_count directories)"
+  done <<<"$dead_dirs"
+
+  # Convert to MB and GB using correct units
+  total_gb=$(echo "scale=2; $total_kb / 1048576" | bc)
+
+  echo "Total space used by Dead folders:"
+  echo "• $total_gb GB"
+
+elif [ "$1" == "clean" ]; then
+  echo "Dead folders found:"
+  find ~/Library/Developer/CoreSimulator/Devices/ -type d -name Dead -exec bash -c '
+    count=$(find "$0" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d "[:space:]")
+    if [ "$count" -gt 0 ]; then
+      echo "$0 ($count directories)"
+    fi
+  ' {} \;
+
+  read -p "Delete all contents inside these Dead folders? (y/n): " confirm
+  if [[ $confirm == "y" ]]; then
+    find ~/Library/Developer/CoreSimulator/Devices/ -type d -name Dead -exec bash -c '
+      count=$(find "$0" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d "[:space:]")
+      if [ "$count" -eq 0 ]; then
+        exit 0
+      fi
+      rm -rf "$0"/*
+      echo "Cleaned: $0 ($count directories deleted)"
+    ' {} \;
+    echo "Cleanup complete."
+  else
+    echo "Aborted."
+  fi
+
+else
+  echo "Usage: $(basename "$0") {check|clean}"
+  echo
+  echo "  check   Show disk usage of dead builds"
+  echo "  clean   Remove dead builds"
+  echo
+  echo "This tool helps cleanup dead builds from the iOS Simulator."
+  echo "Dead builds are leftover folders created after each build or uninstall, and are not automatically removed."
+  exit 1
+fi

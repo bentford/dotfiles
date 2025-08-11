@@ -1,0 +1,95 @@
+#!/bin/bash
+
+if [[ "$1" == "report" ]]; then
+    echo -e "DerivedData Folder\t\t\t\tWorkspace Path\t\t\t\t\tSize"
+    echo "-----------------------------------------------------------------------------------------------"
+
+    count=1
+    project_total=0
+    non_project_total=0
+    non_project_count=0
+    for project_dir in "$DERIVED_DATA"/*; do
+        plist="$project_dir/info.plist"
+        if [[ -f "$plist" ]]; then
+            # Try to extract WorkspacePath or ProjectPath
+            workspace_path=$(/usr/libexec/PlistBuddy -c "Print :WorkspacePath" "$plist" 2>/dev/null)
+            if [[ -z "$workspace_path" ]]; then
+                workspace_path=$(/usr/libexec/PlistBuddy -c "Print :ProjectPath" "$plist" 2>/dev/null)
+            fi
+            if [[ -n "$workspace_path" ]]; then
+                # Get size of the project_dir
+                size=$(du -sk "$project_dir" | awk '{print $1}')
+                size_h=$(du -sh "$project_dir" | awk '{print $1}')
+                printf "%-3s %-40s %-50s %-10s\n" "$count" "$(basename "$project_dir")" "$workspace_path" "$size_h"
+                project_total=$((project_total + size))
+                ((count++))
+            else
+                size=$(du -sk "$project_dir" | awk '{print $1}')
+                non_project_total=$((non_project_total + size))
+                ((non_project_count++))
+            fi
+        fi
+    done
+    echo "-----------------------------------------------------------------------------------------------"
+    echo "Total project folders: $((count-1)), total size: $(awk -v total=$project_total 'BEGIN {printf "%.2f GB", total/1024/1024}')"
+    echo "Total non-project folders: $non_project_count, total size: $(awk -v total=$non_project_total 'BEGIN {printf "%.2f GB", total/1024/1024}')"
+fi
+
+if [[ "$1" == "clean" && -n "$2" ]]; then
+    index="$2"
+    count=1
+    for project_dir in "$DERIVED_DATA"/*; do
+        plist="$project_dir/info.plist"
+        if [[ -f "$plist" ]]; then
+            workspace_path=$(/usr/libexec/PlistBuddy -c "Print :WorkspacePath" "$plist" 2>/dev/null)
+            if [[ -z "$workspace_path" ]]; then
+                workspace_path=$(/usr/libexec/PlistBuddy -c "Print :ProjectPath" "$plist" 2>/dev/null)
+            fi
+            if [[ -n "$workspace_path" ]]; then
+                if [[ "$count" -eq "$index" ]]; then
+                    rm -rf "$project_dir"
+                    echo "Removed $(basename "$project_dir")"
+                    exit 0
+                fi
+                ((count++))
+            fi
+        fi
+    done
+    echo "No entry found for index $index"
+    exit 1
+fi
+
+if [[ "$1" == "clean-non-project" ]]; then
+    removed=0
+    for project_dir in "$DERIVED_DATA"/*; do
+        plist="$project_dir/info.plist"
+        if [[ -f "$plist" ]]; then
+            workspace_path=$(/usr/libexec/PlistBuddy -c "Print :WorkspacePath" "$plist" 2>/dev/null)
+            if [[ -z "$workspace_path" ]]; then
+                workspace_path=$(/usr/libexec/PlistBuddy -c "Print :ProjectPath" "$plist" 2>/dev/null)
+            fi
+            if [[ -z "$workspace_path" ]]; then
+                rm -rf "$project_dir"
+                echo "Removed non-project folder: $(basename "$project_dir")"
+                ((removed++))
+            fi
+        fi
+    done
+    echo "Total non-project folders removed: $removed"
+    exit 0
+fi
+
+if [[ "$1" == "nuke" ]]; then
+    rm -rf "$DERIVED_DATA"/*
+    echo "All DerivedData has been removed."
+    exit 0
+fi
+
+if [[ $# -eq 0 ]]; then
+    echo "Usage:"
+    echo "  $(basename "$0") report                # List DerivedData folders with index, workspace/project path, and size"
+    echo "  $(basename "$0") clean <index>         # Remove DerivedData folder by index (from report)"
+    echo "  $(basename "$0") clean-non-project     # Remove all non-project DerivedData folders"
+    echo "  $(basename "$0") nuke                  # Remove all DerivedData folders"
+    exit 1
+fi

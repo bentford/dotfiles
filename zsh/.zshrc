@@ -24,5 +24,5 @@ zstyle ':omz:plugins:alias-finder' cheaper yes
 
 export PATH="/opt/homebrew/bin:$HOME/bin:$PATH"
 
-[[ -f .zsh_local ]] && source .zsh_local
-[[ -f .zsh_aliases ]] && source .zsh_aliases
+[[ -f ~/.zsh_local ]] && source ~/.zsh_local
+[[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases

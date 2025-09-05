@@ -15,6 +15,7 @@ map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gd", ":DiffviewFileHistory %<cr>", { desc = "Current File History" })
 map("n", "<Leader>fy", ":let @*=@%<cr>", { desc = "Copy filename to clipboard" })
+map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close Tab" })
 
 -- TODO: determine how to call mini-surround
 -- map("n", "<Leader>gww", "<Leader>gsaiw`", { desc = "Surround backtick inner word" })

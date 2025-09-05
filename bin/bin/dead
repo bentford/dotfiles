@@ -33,6 +33,10 @@ if [ "$1" == "check" ]; then
   echo "• $total_gb GB"
 
 elif [ "$1" == "clean" ]; then
+  force=0
+  if [ "$2" == "-f" ]; then
+    force=1
+  fi
   echo "Dead folders found:"
   find ~/Library/Developer/CoreSimulator/Devices/ -type d -name Dead -exec bash -c '
     count=$(find "$0" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d "[:space:]")
@@ -41,7 +45,11 @@ elif [ "$1" == "clean" ]; then
     fi
   ' {} \;
 
-  read -p "Delete all contents inside these Dead folders? (y/n): " confirm
+  if [ $force -eq 1 ]; then
+    confirm="y"
+  else
+    read -p "Delete all contents inside these Dead folders? (y/n): " confirm
+  fi
   if [[ $confirm == "y" ]]; then
     find ~/Library/Developer/CoreSimulator/Devices/ -type d -name Dead -exec bash -c '
       count=$(find "$0" -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d "[:space:]")
@@ -57,10 +65,10 @@ elif [ "$1" == "clean" ]; then
   fi
 
 else
-  echo "Usage: $(basename "$0") {check|clean}"
+  echo "Usage: $(basename "$0") {check|clean} [-f]"
   echo
-  echo "  check   Show disk usage of dead builds"
-  echo "  clean   Remove dead builds"
+  echo "  check         Show disk usage of dead builds"
+  echo "  clean [-f]    Remove dead builds (use -f to force without confirmation)"
   echo
   echo "This tool helps cleanup dead builds from the iOS Simulator."
   echo "Dead builds are leftover folders created after each build or uninstall, and are not automatically removed."

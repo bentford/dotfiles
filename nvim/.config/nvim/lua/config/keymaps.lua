@@ -9,8 +9,8 @@ local function insert_filename()
   vim.api.nvim_feedkeys(keys, "i", true)
 end
 
-map("i", "<c-8>", "<c-r>=strftime('%F')<cr>", { desc = "Insert date" })
-map("i", "<C-9>", insert_filename, { desc = "Insert filename" })
+map("i", "<c-d>", "<c-r>=strftime('%F')<cr>", { desc = "Insert date" })
+map("i", "<C-f>", insert_filename, { desc = "Insert filename" })
 map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gd", ":DiffviewFileHistory %<cr>", { desc = "Current File History" })

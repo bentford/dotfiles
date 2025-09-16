@@ -35,3 +35,22 @@ function git-fetch-development-create-branch() {
   gswc "$branch"
 }
 
+function mkdir-cp() {
+  if [ $# -lt 2 ]; then
+    echo "Usage: mkdir-cp <source> <destination>"
+    return 1
+  fi
+
+  local dest="$2"
+
+  # If destination ends with /, treat it as a directory
+  if [[ "$dest" == */ ]]; then
+    mkdir -p "$dest"
+  else
+    # Create parent directory of the destination file
+    local dest_dir="$(dirname "$dest")"
+    mkdir -p "$dest_dir"
+  fi
+
+  cp "$1" "$2"
+}

@@ -42,6 +42,20 @@ return {
 
         print("Selected line: " .. random_line)
       end, {})
+
+      vim.api.nvim_create_user_command("NewDaily", function(opts)
+        local date = os.date("%Y-%m-%d")
+        local filename = date .. ".md"
+
+        if opts.args and opts.args ~= "" then
+          filename = opts.args .. "/" .. filename
+        end
+
+        vim.cmd("edit " .. filename)
+      end, {
+        nargs = "?",
+        complete = "dir"
+      })
     end,
   },
 }

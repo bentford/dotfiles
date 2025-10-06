@@ -10,6 +10,7 @@ alias gfdcb="git-fetch-development-create-branch"
 alias gfod="gfo development"
 alias gfodd="gfo development:development"
 
+alias gcb='git rev-parse --abbrev-ref HEAD'
 
 export DERIVED_DATA="$HOME/Library/Developer/Xcode/DerivedData"
 

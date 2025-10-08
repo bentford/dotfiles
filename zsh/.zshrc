@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 source "/opt/homebrew/opt/spaceship/spaceship.zsh"
 
+
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
 zstyle ':omz:update' mode auto      # update automatically without asking
@@ -13,16 +14,19 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 
 zstyle ':omz:update' frequency 14
 
-plugins=(git alias-finder)
+export PATH="/opt/homebrew/bin:$HOME/bin:$PATH"
+
+plugins=(git alias-finder tmux)
+ZSH_TMUX_AUTOCONNECT=true
 
 source $ZSH/oh-my-zsh.sh
+
 
 zstyle ':omz:plugins:alias-finder' autoload yes
 zstyle ':omz:plugins:alias-finder' longer yes
 zstyle ':omz:plugins:alias-finder' exact yes
 zstyle ':omz:plugins:alias-finder' cheaper yes
 
-export PATH="/opt/homebrew/bin:$HOME/bin:$PATH"
 
 [[ -f ~/.zsh_local ]] && source ~/.zsh_local
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases

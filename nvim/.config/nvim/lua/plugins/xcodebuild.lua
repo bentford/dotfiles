@@ -18,7 +18,7 @@ return {
     { "<leader>xr", "<cmd>XcodebuildRun<cr>", desc = "Run app" },
     { "<leader>xs", "<cmd>XcodebuildSelectScheme<cr>", desc = "Select scheme" },
     { "<leader>xd", "<cmd>XcodebuildSelectDevice<cr>", desc = "Select device" },
-    { "<leader>xl", "<cmd>XcodebuildShowLogs<cr>", desc = "Show build logs" },
+    { "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", desc = "Show build logs" },
     { "<leader>xt", "<cmd>XcodebuildTest<cr>", desc = "Run tests" },
     { "<leader>xy", "<cmd>XcodebuildTestExplorerToggle<cr>", desc = "Toggle test explorer" },
     { "<leader>xc", "<cmd>XcodebuildClean<cr>", desc = "Clean project" },

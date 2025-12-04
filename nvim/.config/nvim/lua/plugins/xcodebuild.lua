@@ -2,15 +2,26 @@ return {
   "wojciech-kulik/xcodebuild.nvim",
   dependencies = {
     "folke/snacks.nvim", -- (optional) to show previews
-
     "MunifTanjim/nui.nvim",
-    "nvim-tree/nvim-tree.lua", -- (optional) to manage project files
-    "stevearc/oil.nvim", -- (optional) to manage project files
     "nvim-treesitter/nvim-treesitter", -- (optional) for Quick tests support (required Swift parser)
   },
   config = function()
     require("xcodebuild").setup({
       mappings = true,
+      integrations = {
+        -- Automatically runs "xcode-build-server config" when scheme changes
+        -- This uses Xcode's native build logs (via -resultBundlePath)
+        xcode_build_server = {
+          enabled = true, -- Enable the built-in integration
+          guess_scheme = false, -- Auto-configure based on current file's target
+        },
+        nvim_tree = {
+          enabled = false, -- Disable to suppress xcp tool warning
+        },
+        oil_nvim = {
+          enabled = false, -- Disable to suppress xcp tool warning
+        },
+      },
     })
   end,
   keys = {
@@ -21,6 +32,6 @@ return {
     { "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", desc = "Show build logs" },
     { "<leader>xt", "<cmd>XcodebuildTest<cr>", desc = "Run tests" },
     { "<leader>xy", "<cmd>XcodebuildTestExplorerToggle<cr>", desc = "Toggle test explorer" },
-    { "<leader>xc", "<cmd>XcodebuildClean<cr>", desc = "Clean project" },
+    { "<leader>xc", "<cmd>XcodebuildCleanBuild<cr>", desc = "Clean Build" },
   },
 }

@@ -1,2 +1,3 @@
 font-size = 15
 theme = "TokyoNight"
+unfocused-split-opacity = 0.9

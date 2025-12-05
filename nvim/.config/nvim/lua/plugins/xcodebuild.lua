@@ -8,6 +8,9 @@ return {
   config = function()
     require("xcodebuild").setup({
       mappings = true,
+      code_coverage = {
+        enabled = true,
+      },
       integrations = {
         -- Automatically runs "xcode-build-server config" when scheme changes
         -- This uses Xcode's native build logs (via -resultBundlePath)

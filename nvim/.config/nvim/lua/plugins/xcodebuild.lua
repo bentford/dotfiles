@@ -34,7 +34,11 @@ return {
     { "<leader>xd", "<cmd>XcodebuildSelectDevice<cr>", desc = "Select device" },
     { "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", desc = "Show build logs" },
     { "<leader>xt", "<cmd>XcodebuildTest<cr>", desc = "Run tests" },
+    { "<leader>xt", "<cmd>XcodebuildTestSelected<cr>", mode = "v", desc = "Run Selected Tests" },
     { "<leader>xy", "<cmd>XcodebuildTestExplorerToggle<cr>", desc = "Toggle test explorer" },
     { "<leader>xc", "<cmd>XcodebuildCleanBuild<cr>", desc = "Clean Build" },
+    { "<leader>xa", "<cmd>XcodebuildCodeActions<cr>", desc = "Show Code Actions" },
+    { "<leader>xC", "<cmd>XcodebuildShowCodeCoverageReport<cr>", desc = "Show Code Coverage Report" },
+    { "<leader>x.", "<cmd>XcodebuildTestRepeat<cr>", desc = "Repeat Last Test Run" },
   },
 }

@@ -1,5 +1,6 @@
 return {
   "wojciech-kulik/xcodebuild.nvim",
+  lazy = false,
   dependencies = {
     "folke/snacks.nvim", -- (optional) to show previews
     "MunifTanjim/nui.nvim",

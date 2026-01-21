@@ -19,6 +19,8 @@ export PATH="/opt/homebrew/bin:$HOME/bin:$PATH"
 plugins=(git alias-finder tmux)
 ZSH_TMUX_AUTOCONNECT=true
 
+export EDITOR="nvim"
+
 source $ZSH/oh-my-zsh.sh
 
 

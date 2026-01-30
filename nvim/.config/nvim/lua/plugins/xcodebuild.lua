@@ -31,6 +31,7 @@ return {
   keys = {
     { "<leader>xb", "<cmd>XcodebuildBuild<cr>", desc = "Build Xcode project" },
     { "<leader>xr", "<cmd>XcodebuildRun<cr>", desc = "Run app" },
+    { "<leader>xbr", "<cmd>XcodebuildBuildRun<cr>", desc = "Build and Run Xcode project" },
     { "<leader>xs", "<cmd>XcodebuildSelectScheme<cr>", desc = "Select scheme" },
     { "<leader>xd", "<cmd>XcodebuildSelectDevice<cr>", desc = "Select device" },
     { "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", desc = "Show build logs" },

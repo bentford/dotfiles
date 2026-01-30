@@ -14,7 +14,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 
 zstyle ':omz:update' frequency 14
 
-export PATH="/opt/homebrew/bin:$HOME/bin:$PATH"
+export PATH="/opt/homebrew/bin:$HOME/bin:$PATH:$HOME/.local/bin"
 
 plugins=(git alias-finder tmux)
 ZSH_TMUX_AUTOCONNECT=true

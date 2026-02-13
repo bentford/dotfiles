@@ -12,10 +12,10 @@ alias gfodd="gfo development:development"
 
 alias gcb='git rev-parse --abbrev-ref HEAD'
 
-alias ghpc='gh pr create -e'
+alias ghpce='gh pr create -e'
 alias ghpcd='gh pr create -e -d'
 alias ghpm='gh pr merge --auto --merge'
-alias ghpc='gh pr checkout'
+alias ghpco='gh pr checkout'
 alias ghpv='gh pr view -w'
 
 export DERIVED_DATA="$HOME/Library/Developer/Xcode/DerivedData"

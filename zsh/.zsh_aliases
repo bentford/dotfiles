@@ -12,6 +12,12 @@ alias gfodd="gfo development:development"
 
 alias gcb='git rev-parse --abbrev-ref HEAD'
 
+alias ghpc='gh pr create -e'
+alias ghpd='gh pr create -e -d'
+alias ghpm='gh pr merge --auto --merge'
+alias ghpo='gh pr checkout'
+alias ghpw='gh pr view -w'
+
 export DERIVED_DATA="$HOME/Library/Developer/Xcode/DerivedData"
 
 function git-fetch-switch() {

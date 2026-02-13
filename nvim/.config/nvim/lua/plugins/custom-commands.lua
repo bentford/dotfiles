@@ -64,7 +64,7 @@ return {
       end
 
       vim.api.nvim_create_user_command("SimLog", stream_sim_logs, {})
-      vim.keymap.set("n", "<leader>xS", stream_sim_logs, { desc = "Stream simulator logs" })
+      vim.keymap.set("n", "<leader>xo", stream_sim_logs, { desc = "Stream simulator logs" })
 
       vim.api.nvim_create_user_command("NewDaily", function(opts)
         local date = os.date("%Y-%m-%d")

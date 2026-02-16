@@ -17,6 +17,7 @@ alias ghpcd='gh pr create -e -d'
 alias ghpm='gh pr merge --auto --merge'
 alias ghpco='gh pr checkout'
 alias ghpv='gh pr view -w'
+alias ghps='gh pr status'
 
 export DERIVED_DATA="$HOME/Library/Developer/Xcode/DerivedData"
 

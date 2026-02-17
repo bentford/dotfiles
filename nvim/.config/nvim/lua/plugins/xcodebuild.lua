@@ -10,7 +10,7 @@ return {
     require("xcodebuild").setup({
       mappings = true,
       code_coverage = {
-        enabled = false,
+        enabled = true,
       },
       integrations = {
         -- Automatically runs "xcode-build-server config" when scheme changes

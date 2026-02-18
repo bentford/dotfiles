@@ -22,7 +22,9 @@ allowed-tools: Bash
 
 3. **Get the developer prefix** by running `git config user.name`, lowercasing the result, and taking only the first name (first word).
 
-4. **Update master**:
+4. **Update default branch**:
+
+   Look for the "HEAD branch" line to identify whether the default branch is `master` or `main`. Use that as the base branch.
 
    ```bash
    git checkout master && git pull origin master

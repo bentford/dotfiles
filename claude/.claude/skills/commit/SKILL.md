@@ -18,8 +18,7 @@ Create a git commit for the currently staged changes.
    - Focuses on **why** over **what**
    - Matches the style of recent commits in this repo
    - If `$ARGUMENTS` is provided, use it as additional context for the message
-4. Show the proposed message to the user and ask for approval.
-5. Create the commit. Use a HEREDOC to pass the message:
+5. Create the commit, no confirmation needed. Use a HEREDOC to pass the message:
 
 ```
 git commit -m "$(cat <<'EOF'

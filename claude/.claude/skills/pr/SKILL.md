@@ -67,10 +67,17 @@ allowed-tools: Bash, Read, Grep, Glob
    )"
    ```
 
-8. **Output the PR URL** returned by `gh pr create`.
+8. **Enable auto-merge** (unless the user passed `--no-auto-merge` or `no-auto-merge` as an argument):
+
+   ```bash
+   gh pr merge --auto --merge
+   ```
+
+9. **Output the PR URL** returned by `gh pr create`.
 
 ## Important
 
 - Do NOT amend or create any commits.
 - Do NOT modify any files.
 - If `gh pr create` fails because a PR already exists, inform the user and show the existing PR URL.
+- Auto-merge is enabled by default. Pass `--no-auto-merge` to skip it.

@@ -24,6 +24,11 @@ map("n", "<leader>to", ":tabonly<CR>", { desc = "Close All Other Tabs" })
 -- map("n", "<Leader>gww", "<Leader>gsaiw`", { desc = "Surround backtick inner word" })
 -- map("n", "<Leader>gWW", "<Leader>gsaiW`", { desc = "Surround backtick inner WORD" })
 
+-- Snacks picker: fullscreen + no preview by default
+local picker_layout = { fullscreen = true, hidden = { "preview" } }
+map("n", "<leader>ff", function() Snacks.picker.files({ layout = picker_layout }) end, { desc = "Find Files (Root Dir)" })
+map("n", "<leader>sg", function() Snacks.picker.grep({ layout = picker_layout }) end, { desc = "Grep (Root Dir)" })
+
 -- Search markdown headers
 
 vim.keymap.set("n", "gk", function()

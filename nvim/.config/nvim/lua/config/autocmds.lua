@@ -14,7 +14,7 @@ local function codesign_plugins()
 
   local script = string.format(
     [[find %s -name "*.so" | while read f; do
-        codesign -v "$f" 2>/dev/null || echo "$f"
+        codesign --verify --strict "$f" 2>/dev/null || echo "$f"
       done]],
     vim.fn.shellescape(data_dir)
   )

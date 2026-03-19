@@ -3,6 +3,7 @@
   "permissions": {
     "allow": [
       "Bash(aws:*)",
+      "Bash(bats:*)",
       "Bash(cat:*)",
       "Bash(cd:*)",
       "Bash(cp:*)",
@@ -16,6 +17,8 @@
       "Bash(ls:*)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
       "Bash(open:*)",
       "Bash(sort:*)",
       "Bash(swift:*)",

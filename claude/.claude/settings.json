@@ -21,6 +21,7 @@
       "Bash(npx:*)",
       "Bash(open:*)",
       "Bash(sort:*)",
+      "Bash(sed:*)",
       "Bash(swift:*)",
       "Bash(tail:*)",
       "Bash(touch:*)",
@@ -29,6 +30,9 @@
       "Bash(xcb:*)",
       "Bash(xcodebuild:*)",
       "Bash(xcrun:*)",
+      "Skill(commit)",
+      "Skill(pr)",
+      "Skill(transcribe)"
     ],
     "deny": []
   }

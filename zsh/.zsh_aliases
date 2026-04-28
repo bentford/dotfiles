@@ -6,6 +6,8 @@ alias gcanm="git commit --all --no-verify --message"
 alias gcnn!="git commit --no-verify --no-edit --amend"
 
 alias gfsw="git-fetch-switch"
+alias gfcb="git-fetch-checkout-branch"
+alias ghpf="git-fetch-checkout-pr" # worktree-compatible version of ghph (gh pr checkout)
 alias gfdcb="git-fetch-development-create-branch"
 alias gfod="gfo development"
 alias gfodd="gfo development:development"
@@ -30,6 +32,33 @@ function git-fetch-switch() {
   local branch="$1"
   gfo "$branch:$branch"
   gsw "$branch"
+}
+
+function git-fetch-checkout-pr() {
+  if [ -z "$1" ]; then
+    echo "Usage: git-fetch-checkout-pr <pr-number>"
+    return 1
+  fi
+
+  local branch
+  branch=$(gh pr view "$1" --json headRefName --jq '.headRefName')
+  if [ -z "$branch" ]; then
+    echo "Could not find branch for PR $1"
+    return 1
+  fi
+
+  git-fetch-checkout-branch "$branch"
+}
+
+function git-fetch-checkout-branch() {
+  if [ -z "$1" ]; then
+    echo "Usage: git-fetch-checkout-branch <branch-name>"
+    return 1
+  fi
+
+  local branch="$1"
+  git fetch origin "$branch":"refs/remotes/origin/$branch"
+  git checkout -b "$branch" "origin/$branch"
 }
 
 function git-fetch-development-create-branch() {

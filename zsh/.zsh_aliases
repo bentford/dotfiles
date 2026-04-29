@@ -58,7 +58,12 @@ function git-fetch-checkout-branch() {
 
   local branch="$1"
   git fetch origin "$branch":"refs/remotes/origin/$branch"
-  git checkout -b "$branch" "origin/$branch"
+  if git show-ref --verify --quiet "refs/heads/$branch"; then
+    git checkout "$branch"
+    git reset --hard "origin/$branch"
+  else
+    git checkout -b "$branch" "origin/$branch"
+  fi
 }
 
 function git-fetch-development-create-branch() {

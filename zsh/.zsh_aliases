@@ -57,12 +57,12 @@ function git-fetch-checkout-branch() {
   fi
 
   local branch="$1"
-  git fetch origin "$branch":"refs/remotes/origin/$branch"
+  git fetch origin "$branch"
   if git show-ref --verify --quiet "refs/heads/$branch"; then
     git checkout "$branch"
-    git reset --hard "origin/$branch"
+    git reset --hard FETCH_HEAD
   else
-    git checkout -b "$branch" "origin/$branch"
+    git checkout -b "$branch" FETCH_HEAD
   fi
 }
 

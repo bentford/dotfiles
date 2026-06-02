@@ -1,0 +1,2 @@
+# Paths to scope <leader>ss (grep) and <leader>sf (find files) to.
+# One path per line, relative to project root. Lines starting with # are ignored.

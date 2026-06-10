@@ -20,6 +20,9 @@ map("n", "<Leader>fy", ":let @*=@%<cr>", { desc = "Copy filename to clipboard" }
 map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close Tab" })
 map("n", "<leader>to", ":tabonly<CR>", { desc = "Close All Other Tabs" })
 
+map("i", "<M-f>", "<C-Right>")
+map("i", "<M-b>", "<C-Left>")
+
 -- TODO: determine how to call mini-surround
 -- map("n", "<Leader>gww", "<Leader>gsaiw`", { desc = "Surround backtick inner word" })
 -- map("n", "<Leader>gWW", "<Leader>gsaiW`", { desc = "Surround backtick inner WORD" })

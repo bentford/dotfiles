@@ -16,6 +16,7 @@ end
 local function scoped_grep()
   local paths = load_search_paths()
   if not paths then
+    vim.notify("No .nvim-search-paths found — searching all files", vim.log.levels.INFO)
     Snacks.picker.grep()
     return
   end
@@ -40,6 +41,7 @@ end
 local function scoped_files()
   local paths = load_search_paths()
   if not paths then
+    vim.notify("No .nvim-search-paths found — searching all files", vim.log.levels.INFO)
     Snacks.picker.files()
     return
   end

@@ -24,10 +24,14 @@ Create a git commit for the currently staged changes.
 git commit -m "$(cat <<'EOF'
 <message>
 
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+Co-Authored-By: <model name> <noreply@anthropic.com>
 EOF
 )"
 ```
+
+Use the name of the model actually running the session (e.g. `Claude Opus 5`,
+`Claude Sonnet 5`), not a hardcoded one — the trailer should record who wrote
+the commit. Session instructions naming an exact trailer take precedence.
 
 ## Rules
 

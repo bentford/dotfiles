@@ -35,5 +35,8 @@
       "Skill(transcribe)"
     ],
     "deny": []
-  }
+  },
+  "effortLevel": "medium",
+  "skipWorkflowUsageWarning": true,
+  "tui": "fullscreen"
 }

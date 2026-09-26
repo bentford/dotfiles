@@ -96,3 +96,89 @@ function mkdir-cp() {
 
   cp "$1" "$2"
 }
+
+# Backup branches: <current-branch>-<n>-<postfix>
+unalias gbb gbbr gbbc gbbrc 2>/dev/null
+
+# Print highest backup number for the current branch (0 if none)
+function _gbb_max() {
+  local cur="$1" b rest n max=0
+  for b in ${(f)"$(git for-each-ref --format='%(refname:short)' refs/heads)"}; do
+    [[ "$b" == "$cur"-* ]] || continue
+    rest="${b#"$cur"-}"
+    n="${rest%%-*}"
+    [[ "$n" == <-> ]] && (( n > max )) && max=$n
+  done
+  echo $max
+}
+
+# gbb [postfix words...] - create a backup branch of the current branch
+function gbb() {
+  local cur
+  cur="$(git branch --show-current)" || return 1
+  if [[ -z "$cur" ]]; then
+    echo "gbb: not on a branch (detached HEAD?)" >&2
+    return 1
+  fi
+
+  local n=$(( $(_gbb_max "$cur") + 1 ))
+  local name="$cur-$n"
+  if (( $# )); then
+    local postfix="${(j:-:)@}"
+    postfix="${postfix// /-}"
+    name="$name-$postfix"
+  fi
+
+  git branch "$name" || return 1
+  echo "$name"
+}
+
+# gbbr [n] - print backup branch name for number n (latest if omitted)
+function gbbr() {
+  local cur
+  cur="$(git branch --show-current)" || return 1
+  if [[ -z "$cur" ]]; then
+    echo "gbbr: not on a branch (detached HEAD?)" >&2
+    return 1
+  fi
+
+  local n="$1"
+  if [[ -z "$n" ]]; then
+    n="$(_gbb_max "$cur")"
+    if (( n == 0 )); then
+      echo "gbbr: no backup branches for $cur" >&2
+      return 1
+    fi
+  elif [[ "$n" != <-> ]]; then
+    echo "Usage: gbbr [number]" >&2
+    return 1
+  fi
+
+  local b
+  for b in ${(f)"$(git for-each-ref --format='%(refname:short)' "refs/heads/$cur-$n" "refs/heads/$cur-$n-*")"}; do
+    echo "$b"
+    return 0
+  done
+  echo "gbbr: no backup #$n for $cur" >&2
+  return 1
+}
+
+# gbbc - copy current branch name to clipboard
+function gbbc() {
+  local cur
+  cur="$(git branch --show-current)" || return 1
+  if [[ -z "$cur" ]]; then
+    echo "gbbc: not on a branch (detached HEAD?)" >&2
+    return 1
+  fi
+  printf '%s' "$cur" | pbcopy
+  echo "$cur"
+}
+
+# gbbrc [n] - copy backup branch name for number n (latest if omitted) to clipboard
+function gbbrc() {
+  local name
+  name="$(gbbr "$@")" || return 1
+  printf '%s' "$name" | pbcopy
+  echo "$name"
+}

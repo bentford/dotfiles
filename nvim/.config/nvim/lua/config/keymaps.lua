@@ -17,6 +17,11 @@ map("n", "<Leader>gn", ":Neogit<cr>", { desc = "Neogit" })
 map("n", "<Leader>gd", ":DiffviewFileHistory %<cr>", { desc = "Current File History" })
 map("n", "<Leader>fy", ":let @*=@%<cr>", { desc = "Copy filename to clipboard" })
 
+map("n", "<Leader>fi", function()
+  vim.cmd("silent! update")
+  vim.system({ "open", "-a", "iA Writer", vim.fn.expand("%:p") })
+end, { desc = "Open file in iA Writer" })
+
 map("n", "<leader>tc", ":tabclose<CR>", { desc = "Close Tab" })
 map("n", "<leader>to", ":tabonly<CR>", { desc = "Close All Other Tabs" })
 

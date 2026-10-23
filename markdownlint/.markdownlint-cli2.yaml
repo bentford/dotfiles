@@ -1,0 +1,4 @@
+# Global markdownlint-cli2 config (passed via --config from Neovim's nvim-lint)
+config:
+  # Paragraphs are kept on a single line and soft-wrapped by the editor
+  MD013: false
